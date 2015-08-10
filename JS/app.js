@@ -1,30 +1,101 @@
 document.ready(function(){
 
-//Questions array
-var questions = [q1, q2, q3, q4, q5]
+//Factory Function
+function createQuestion = function(params){
+	validateParams(params)
+	var obj = {
+		questions: params.question,
+		selections: params.selections,
+		questionNumber: params.questionNum,
+		correct: params.correctAnswer,
+		rationale: params.rationale,
 
-
-
-//Object.create() OOP - not sure if this makes sense for this assignment
-var qTemplate = {
-	question: "Question asked",
-	selections: "possible answers",
-	questionNum: "do I need this, or is it in the array?",
-	correct: "The correct response",
-	rationale: "Why the answer is correct"
+	}
+	return obj
 }
 
-var q1 = Object.create(qTemplate);
-	q1.question = "Question number 1";
-	q1.selections = "question 1 possible answers";
-	q1.questionNum = "Question 1";
-	q1.correct = "Correct answer to number 1";
-	q1.rationale = "The correct answer to 1 is because...";
+//Initialization
+var questions = [
+	createQuestion({
+		question: "Question number 1?",
+		selections: [
+			"Answer 1",
+			"Answer 2",
+			"Answer 3",
+			"Answer 4",
+		],
+		questionNum: 1,
+		correctAnswer: "Correct Answer is",
+		rationale: "The reason why...",
+	}),
+	createQuestion({
+		question: "Question number 2?",
+		selections: [
+			"Answer 1",
+			"Answer 2",
+			"Answer 3",
+			"Answer 4",
+		],
+		questionNum: 2,
+		correctAnswer: "Correct Answer is",
+		rationale: "The reason why...",
+	}),
+	createQuestion({
+		question: "Question number 3?",
+		selections: [
+			"Answer 1",
+			"Answer 2",
+			"Answer 3",
+			"Answer 4",
+		],
+		questionNum: 3,
+		correctAnswer: "Correct Answer is",
+		rationale: "The reason why...",
+	}),
+	createQuestion({
+		question: "Question number 4?",
+		selections: [
+			"Answer 1",
+			"Answer 2",
+			"Answer 3",
+			"Answer 4",
+		],
+		questionNum: 4,
+		correctAnswer: "Correct Answer is",
+		rationale: "The reason why...",
+	}),
+	createQuestion({
+		question: "Question number 5?",
+		selections: [
+			"Answer 1",
+			"Answer 2",
+			"Answer 3",
+			"Answer 4",
+		],
+		questionNum: 5,
+		correctAnswer: "Correct Answer is",
+		rationale: "The reason why...",
+	}),
+]
 
 
 
+/*Constructor Function
 
-//Factory function
+function QuestionTemplate(question, selections, questionNum, correct, rationale){
+	this.question = question;
+	this.selections = selections;
+	this.questionNum = question number;
+	this.correct = correct answer;
+	this.rationale = why the answer is correct;
+}
+
+var q1 = new QuestionTemplate('question 1', ['selection 1', 'selection 2', 'selection 3', etc.])
+
+*/
+
+/*Factory function
+
 function questionTemplate(question, selections, questionNum, correct, rationale){
 	var q = {};
 	q.question = question;
@@ -45,22 +116,13 @@ var q2 = questionTemplate()
 var q3 = questionTemplate()
 var q4 = questionTemplate()
 var q5 = questionTemplate()
+*/
 
+/*Questions array
 
-//Constructor Function
+*** I dont think i need this now, do I? ***
 
-function QuestionTemplate(question, selections, questionNum, correct, rationale){
-	this.question = question;
-	this.selections = selections;
-	this.questionNum = question number;
-	this.correct = correct answer;
-	this.rationale = why the answer is correct;
-}
+var questions = [q1, q2, q3, q4, q5]
 
-var q1 = new QuestionTemplate('question 1', ['selection 1', 'selection 2', 'selection 3', etc.])
-
-
-
-
-
+*/
 });
