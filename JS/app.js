@@ -17,68 +17,71 @@ function createQuestion = function(params){
 //Initialization
 var questions = [
 	createQuestion({
-		question: "Question number 1?",
+		question: "What year was Baltimore City College founded?",
 		selections: [
-			"Answer 1",
-			"Answer 2",
-			"Answer 3",
-			"Answer 4",
+			"1970",
+			"1870",
+			"1839",
+			"1902",
+		],
+		questionNum: 0,
+		correctAnswer: 2,
+		rationale: "Baltimore City College is the third oldest public high school in the US!",
+	}),
+	createQuestion({
+		question: "What does Palmam Qui Meruit Ferat mean?",
+		selections: [
+			"Honor to the one who earns it",
+			"Honor to Castle on the Hill",
+			"City Forever and for always",
+			"Always do your best",
 		],
 		questionNum: 1,
-		correctAnswer: "Correct Answer is",
-		rationale: "The reason why...",
+		correctAnswer: 0,
+		rationale: "Literally means Let him who earns it, bear the palm",
 	}),
 	createQuestion({
-		question: "Question number 2?",
+		question: "When was the first City-Poly football game played?",
 		selections: [
-			"Answer 1",
-			"Answer 2",
-			"Answer 3",
-			"Answer 4",
+			"1929",
+			"1889",
+			"1903",
+			"1899",
 		],
 		questionNum: 2,
-		correctAnswer: "Correct Answer is",
-		rationale: "The reason why...",
+		correctAnswer: 1,
+		rationale: "One of the oldest high school football rivalries in the country!",
 	}),
 	createQuestion({
-		question: "Question number 3?",
+		question: "Where is the City-Poly game played each year?",
 		selections: [
-			"Answer 1",
-			"Answer 2",
-			"Answer 3",
-			"Answer 4",
+			"Ravens Stadium",
+			"Memorial Stadium",
+			"Camden Yards",
+			"Alternates between City and Poly homefields",
 		],
 		questionNum: 3,
-		correctAnswer: "Correct Answer is",
-		rationale: "The reason why...",
+		correctAnswer: 0,
+		rationale: "One of the few high school games given the priviledge to play at M & T Bank",
 	}),
 	createQuestion({
-		question: "Question number 4?",
+		question: "When did City field its first Lacrosse team?",
 		selections: [
-			"Answer 1",
-			"Answer 2",
-			"Answer 3",
-			"Answer 4",
+			"1945",
+			"1900",
+			"1879",
+			"1916",
 		],
 		questionNum: 4,
-		correctAnswer: "Correct Answer is",
-		rationale: "The reason why...",
-	}),
-	createQuestion({
-		question: "Question number 5?",
-		selections: [
-			"Answer 1",
-			"Answer 2",
-			"Answer 3",
-			"Answer 4",
-		],
-		questionNum: 5,
-		correctAnswer: "Correct Answer is",
-		rationale: "The reason why...",
+		correctAnswer: 2,
+		rationale: "City has the oldest high school lacrosse team in the state of Maryland!",
 	}),
 ]
 
+//Global Variables
 
+var numberCorrect = 0;
+var currentQuestion = 0;
 
 /*Constructor Function
 

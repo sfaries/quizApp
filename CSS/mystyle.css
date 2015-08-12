@@ -1,0 +1,145 @@
+body {
+	background-color: lightgrey;
+}
+
+#cityBanner {
+	background-image: url(http://i58.tinypic.com/23wuvds.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 7em;
+	width: 75em;
+	margin-left: auto;
+	margin-right: auto;
+}
+#castleOnTheHill {
+	background-image: url(http://i58.tinypic.com/359z8ee.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: ;
+	margin-left: auto;
+	margin-right: auto;
+	height: 12em;
+	width: 50em;
+}
+.startQuiz {
+	height: 10em;
+	width: 30em;
+	background-color: orange;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3em;
+	border: solid;
+	border-color: black;
+}
+
+.startQuiz h1 {
+	text-align: center;
+	padding-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.5rem;
+	font-family: sans-serif;
+
+}
+
+.startQuiz input {
+	text-align: center;
+	font-size: 1.2rem;
+	background-size: 4em;
+	margin-left: 9.7em;
+	margin-right: auto;
+	background-color: lightgrey;
+}
+
+.questionContainer {
+	background-image: url(http://i58.tinypic.com/2aaeql5.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 27em;
+	width: 65em;
+	background-color: white;
+	border: solid;
+	border-color: black;
+	margin-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.questionContainer h1 {
+	text-align: center;
+	padding-top: 1.45em;
+	padding-bottom: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.question {
+	text-align: center;
+	margin-top: 60em;
+	margin-left:17%;
+	font-size: 30px;
+	font-weight: bolder;
+
+}
+
+#answerContainer {
+	padding-left: 6em;
+	padding-top: 1.5em;
+	font-size: 30px;
+	font-weight:bold;
+}
+
+.questionButtons {
+	height: 5em;
+	width: 70em;
+	background: white;
+	border: solid;
+	border-color: black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+}
+
+.cityButton {
+	margin-left: 17%;
+	margin-right: auto;
+	margin-top: .25em;
+}
+
+.questionButtons .cityButton > li {
+	display: inline-block;
+	padding-left: 2em;
+	padding-right: 2em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1em;
+	border: solid;
+	border-color: black;
+}
+
+#buttonOne {
+}
+
+#buttonTwo {
+}
+
+#buttonThree {
+}
+
+#buttonFour {
+}
+
+#buttonFive {
+}
+.footer {
+	height: 2em;
+	width: 75em;
+	margin-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: orange;
+
+}
