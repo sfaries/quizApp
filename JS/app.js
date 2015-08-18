@@ -5,7 +5,45 @@ $(document).ready(function(){
 var numberCorrect = 0;
 var currentQuestion = 0;
 
+
+////****////  Event Listeners  ////****//// 
+
+
+//Click to Start
+
+$('#startButton').on('click', function(){
+	$('.startQuiz').hide();
+	$('#castleOnTheHill').hide();
+	$('.questionContainer').show();
+	$('.questionButtons').show();
+	$('.cityButton').hide();
+	$('#submit').show();
+	$('.rationale').show();
+});
+
+//Submit Answer
+
+$('#submit').on('click', function(){
+	addButton();
+	currentQuestion++;
+	newQuestion();
+	
+});
+
+//Retake button
+
+$('#takeAgain').on('click', function(){
+	currentQuestion = 0;
+	numberCorrect = 0;
+	firstQuestion();
+});
+
+
+////****////  Functions  ////****////
+
+
 //Initial Page load
+
 function loadPage() {
 $('.questionContainer').hide();
 $('.questionButtons').hide();
@@ -17,39 +55,8 @@ $('#takeAgain').hide();
 
 }
 
-//Click to Start
-$('#startButton').on('click', function(){
-	$('.startQuiz').hide();
-	$('#castleOnTheHill').hide();
-	$('.questionContainer').show();
-	$('.questionButtons').show();
-	$('.cityButton').hide();
-	$('#submit').show();
-	$('.rationale').show();
-});
-
-//First Question
-
-function firstQuestion(){
-	$('.questionContainer').show();
-	$('.questionButtons').show;
-	$('#submit').show();
-	var firstQ = '<span class = "question">' + questions[currentQuestion].questions + '</span><br><div id="answerContainer"><input type = "radio" name = "selections" class = "selections" value = "0"> <span class = "answer">' + questions[currentQuestion].selections[0] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "1"> <span class = "answer">' + questions[currentQuestion].selections[1] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "2"> <span class = "answer">' + questions[currentQuestion].selections[2] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "3"> <span class = "answer">' + questions[currentQuestion].selections[3] + '</span><br></div>';
-	$('.questionContainer').html(firstQ);
-	$('#takeAgain').hide();
-	$('#explanation').hide();
-	$('.cityButton').hide();
-
-}
-
-//Submit Answer
-$('#submit').on('click', function(){
-	addButton();
-	currentQuestion++;
-	newQuestion();
-})
-
 //New Question Function
+
 function newQuestion(){
 	if (currentQuestion < 5) {
 		$('.question').remove();
@@ -68,37 +75,23 @@ function newQuestion(){
 	}
 }
 
-//Function that displays score and allows to retake
-function finalScore(){
-	$(".question").remove();
-	$(".answerContainer").remove();
-	$('.selections').remove();
-	$('.answer').remove();
-	var explanation = questions[4].rationale;
-	$('#explanation').html(explanation).show();
-	$('#submit').hide();
-	$('#takeAgain').show();
-	var score = '<span id = "score"> You correctly answered ' + numberCorrect + ' question(s)!'
-	$('#answerContainer').html(score);
-	
-}
-
-//Retake button
-$('#takeAgain').on('click', function(){
-	currentQuestion = 0;
-	numberCorrect = 0;
-	firstQuestion();
-})
-
 //Add city buttons 
+
 function addButton() {
 	var answer = $("input[type= 'radio']:checked").val();
-	//console.log(answer);
 	if (answer == questions[currentQuestion].correct) {
 		numberCorrect++;
 	}
 
 	$('.cityButton').show();
+
+	if (numberCorrect === 0){
+		$('#buttonOne').hide();
+		$('#buttonTwo').hide();
+		$('#buttonThree').hide();
+		$('#buttonFour').hide();
+		$('#buttonFive').hide();
+	}
 
 	if (numberCorrect == 1){
 		$('#buttonOne').show();
@@ -142,8 +135,42 @@ function addButton() {
 
 }
 
+//Function that displays score and allows to retake
+
+function finalScore(){
+	$(".question").remove();
+	$(".answerContainer").remove();
+	$('.selections').remove();
+	$('.answer').remove();
+	var explanation = questions[4].rationale;
+	$('#explanation').html(explanation).show();
+	$('#submit').hide();
+	$('#takeAgain').show();
+	var score = '<span id = "score"> You correctly answered ' + numberCorrect + ' question(s)!';
+	$('#answerContainer').html(score);
+	
+}
+
+//Returns to First Question after retake
+
+function firstQuestion(){
+	$('.questionContainer').show();
+	$('.questionButtons').show();
+	$('#submit').show();
+	var firstQ = '<span class = "question">' + questions[currentQuestion].questions + '</span><br><div id="answerContainer"><input type = "radio" name = "selections" class = "selections" value = "0"> <span class = "answer">' + questions[currentQuestion].selections[0] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "1"> <span class = "answer">' + questions[currentQuestion].selections[1] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "2"> <span class = "answer">' + questions[currentQuestion].selections[2] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "3"> <span class = "answer">' + questions[currentQuestion].selections[3] + '</span><br></div>';
+	$('.questionContainer').html(firstQ);
+	$('#takeAgain').hide();
+	$('#explanation').hide();
+	$('.cityButton').hide();
+
+}
+
+
+////***  Factory Function and Question Object  ***//// 
+
 
 //Factory Function
+
 var createQuestion = function(params){
 	//validateParams(params)
 	var obj = {
@@ -153,11 +180,12 @@ var createQuestion = function(params){
 		correct: params.correctAnswer,
 		rationale: params.rationale,
 
-	}
-	return obj
-}
+	};
+	return obj;
+};
 
 //Initialization
+
 var questions = [
 	createQuestion({
 		question: "What year was Baltimore City College founded?",
@@ -219,15 +247,8 @@ var questions = [
 		correctAnswer: 2,
 		rationale: "City has the oldest high school lacrosse team in the state of Maryland!",
 	}),
-]
-
-
+];
 
 loadPage();
 
-
-
 });
-
-
-
