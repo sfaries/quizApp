@@ -1,8 +1,151 @@
-document.ready(function(){
+$(document).ready(function(){
+
+//Global Variables
+
+var numberCorrect = 0;
+var currentQuestion = 0;
+
+//Initial Page load
+function loadPage() {
+$('.questionContainer').hide();
+$('.questionButtons').hide();
+$('.cityButton').hide();
+$('.rationale').hide();
+$('.footer').hide();
+$('#submit').hide();
+$('#takeAgain').hide();
+
+}
+
+//Click to Start
+$('#startButton').on('click', function(){
+	$('.startQuiz').hide();
+	$('#castleOnTheHill').hide();
+	$('.questionContainer').show();
+	$('.questionButtons').show();
+	$('.cityButton').hide();
+	$('#submit').show();
+	$('.rationale').show();
+});
+
+//First Question
+
+function firstQuestion(){
+	$('.questionContainer').show();
+	$('.questionButtons').show;
+	$('#submit').show();
+	var firstQ = '<span class = "question">' + questions[currentQuestion].questions + '</span><br><div id="answerContainer"><input type = "radio" name = "selections" class = "selections" value = "0"> <span class = "answer">' + questions[currentQuestion].selections[0] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "1"> <span class = "answer">' + questions[currentQuestion].selections[1] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "2"> <span class = "answer">' + questions[currentQuestion].selections[2] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "3"> <span class = "answer">' + questions[currentQuestion].selections[3] + '</span><br></div>';
+	$('.questionContainer').html(firstQ);
+	$('#takeAgain').hide();
+	$('#explanation').hide();
+	$('.cityButton').hide();
+
+}
+
+//Submit Answer
+$('#submit').on('click', function(){
+	addButton();
+	currentQuestion++;
+	newQuestion();
+})
+
+//New Question Function
+function newQuestion(){
+	if (currentQuestion < 5) {
+		$('.question').remove();
+		$('.answerContainer input').remove();
+		$('#explanation').hide();		
+		var nextQ = '<span class = "question">' + questions[currentQuestion].questions + '</span><br><div id="answerContainer"><input type = "radio" name = "selections" class = "selections" value = "0"> <span class = "answer">' + questions[currentQuestion].selections[0] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "1"> <span class = "answer">' + questions[currentQuestion].selections[1] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "2"> <span class = "answer">' + questions[currentQuestion].selections[2] + '</span><br><input type = "radio" name = "selections" class = "selections" value = "3"> <span class = "answer">' + questions[currentQuestion].selections[3] + '</span><br></div>';
+
+		$('.questionContainer').html(nextQ);
+		var explanation = questions[currentQuestion - 1].rationale;
+		$('#explanation').html(explanation).show();
+
+	}
+	else {
+		finalScore();
+		
+	}
+}
+
+//Function that displays score and allows to retake
+function finalScore(){
+	$(".question").remove();
+	$(".answerContainer").remove();
+	$('.selections').remove();
+	$('.answer').remove();
+	var explanation = questions[4].rationale;
+	$('#explanation').html(explanation).show();
+	$('#submit').hide();
+	$('#takeAgain').show();
+	var score = '<span id = "score"> You correctly answered ' + numberCorrect + ' question(s)!'
+	$('#answerContainer').html(score);
+	
+}
+
+//Retake button
+$('#takeAgain').on('click', function(){
+	currentQuestion = 0;
+	numberCorrect = 0;
+	firstQuestion();
+})
+
+//Add city buttons 
+function addButton() {
+	var answer = $("input[type= 'radio']:checked").val();
+	//console.log(answer);
+	if (answer == questions[currentQuestion].correct) {
+		numberCorrect++;
+	}
+
+	$('.cityButton').show();
+
+	if (numberCorrect == 1){
+		$('#buttonOne').show();
+		$('#buttonTwo').hide();
+		$('#buttonThree').hide();
+		$('#buttonFour').hide();
+		$('#buttonFive').hide();
+	}
+
+	if (numberCorrect == 2){
+		$('#buttonOne').show();
+		$('#buttonTwo').show();
+		$('#buttonThree').hide();
+		$('#buttonFour').hide();
+		$('#buttonFive').hide();
+	}
+
+	if (numberCorrect == 3){
+		$('#buttonOne').show();
+		$('#buttonTwo').show();
+		$('#buttonThree').show();
+		$('#buttonFour').hide();
+		$('#buttonFive').hide();
+	}
+
+	if (numberCorrect == 4){
+		$('#buttonOne').show();
+		$('#buttonTwo').show();
+		$('#buttonThree').show();
+		$('#buttonFour').show();
+		$('#buttonFive').hide();
+	}
+
+	if (numberCorrect == 5){
+		$('#buttonOne').show();
+		$('#buttonTwo').show();
+		$('#buttonThree').show();
+		$('#buttonFour').show();
+		$('#buttonFive').show();
+	}
+
+}
+
 
 //Factory Function
-function createQuestion = function(params){
-	validateParams(params)
+var createQuestion = function(params){
+	//validateParams(params)
 	var obj = {
 		questions: params.question,
 		selections: params.selections,
@@ -78,54 +221,13 @@ var questions = [
 	}),
 ]
 
-//Global Variables
 
-var numberCorrect = 0;
-var currentQuestion = 0;
 
-/*Constructor Function
+loadPage();
 
-function QuestionTemplate(question, selections, questionNum, correct, rationale){
-	this.question = question;
-	this.selections = selections;
-	this.questionNum = question number;
-	this.correct = correct answer;
-	this.rationale = why the answer is correct;
-}
 
-var q1 = new QuestionTemplate('question 1', ['selection 1', 'selection 2', 'selection 3', etc.])
 
-*/
-
-/*Factory function
-
-function questionTemplate(question, selections, questionNum, correct, rationale){
-	var q = {};
-	q.question = question;
-	q.selections = selections;
-	q.questionNum = question number;
-	q.correct = correct answer;
-	q.rationale = why the answer is correct;
-	q.createQuestion = function(){
-		return this.question + this.selections + this.questionNum + this.correct + this.rationale
-	} 
-
-	return q;
-
-}
-
-var q1 = questionTemplate("Question number 1", ['selection 1', 'selection 2', etc.])
-var q2 = questionTemplate()
-var q3 = questionTemplate()
-var q4 = questionTemplate()
-var q5 = questionTemplate()
-*/
-
-/*Questions array
-
-*** I dont think i need this now, do I? ***
-
-var questions = [q1, q2, q3, q4, q5]
-
-*/
 });
+
+
+

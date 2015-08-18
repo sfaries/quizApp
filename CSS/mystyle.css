@@ -50,7 +50,7 @@ body {
 	background-size: 4em;
 	margin-left: 9.7em;
 	margin-right: auto;
-	background-color: lightgrey;
+	background-color: white;
 }
 
 .questionContainer {
@@ -58,7 +58,7 @@ body {
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 27em;
+	height: 20em;
 	width: 65em;
 	background-color: white;
 	border: solid;
@@ -68,20 +68,14 @@ body {
 	margin-right: auto;
 }
 
-.questionContainer h1 {
-	text-align: center;
-	padding-top: 1.45em;
-	padding-bottom: 1em;
-	margin-left: auto;
-	margin-right: auto;
-}
 
 .question {
 	text-align: center;
-	margin-top: 60em;
+	margin-top:;
 	margin-left:17%;
 	font-size: 30px;
 	font-weight: bolder;
+	color: white;
 
 }
 
@@ -90,7 +84,26 @@ body {
 	padding-top: 1.5em;
 	font-size: 30px;
 	font-weight:bold;
+
 }
+
+.rationale {
+	height: 3em;
+	width: 40em;
+	background: white;
+	border: solid;
+	border-color: black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	text-align: center;
+	padding-top: .5em;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+
 
 .questionButtons {
 	height: 5em;
@@ -103,6 +116,33 @@ body {
 	margin-top: 0;
 }
 
+#submit {
+	margin-left: 42%;
+	margin-right:auto;
+	margin-top: ;
+	padding: 1em;
+	background-size: 2em;
+	background-color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	width: 15em;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+#takeAgain {
+	margin-left: 42%;
+	margin-right:auto;
+	margin-top: ;
+	padding: 1em;
+	background-size: 2em;
+	background-color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	width: 15em;
+	padding-top:1em;
+	padding-bottom:1em;
+}
 .cityButton {
 	margin-left: 17%;
 	margin-right: auto;

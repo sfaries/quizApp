@@ -5,6 +5,7 @@
 		<meta charset = "UTF 8">
 		<title> QuizApp </title>
 		<link rel = "stylesheet" href = "CSS/mystyle.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src = "JS/app.js"></script>
 	</head>
 
@@ -16,12 +17,11 @@
 		<div class = "startQuiz">
 			<h1 id = "welcomeHeader"> Welcome to Mr. Faries' quiz app! 
 			</h1>
-			<input type = "button" value ="Click to Start">
+			<input id = "startButton" type = "button" value ="Click to Start">
 		</div>
 
 		<div class = "questionContainer">
-			<h1> How well do you know City? </h1>
-			<span class = "question"> Question #1: What year was Baltimore City College founded?</span><br>
+			<span class = "question"> What year was Baltimore City College founded?</span><br>
 			<div id ="answerContainer">
 				<input type = "radio" name = "selections" class = "selections" value = "0"> <span class = "answer"> 1870 </span><br>
 				<input type = "radio" name = "selections" class = "selections" value = "1"> <span class = "answer"> 1970 </span><br>
@@ -29,6 +29,17 @@
 				<input type = "radio" name = "selections" class = "selections" value = "3"> <span class = "answer"> 1902 </span><br>
 
 			</div>
+		</div>
+		
+		<div>
+			<input id = "submit" type = "button" value = "submit">
+			<input id = "takeAgain" type = "button" value = "Take Again?">
+
+
+		</div>
+
+		<div class = "rationale">
+			<span id = "explanation"></span>
 		</div>
 
 		<div class = "questionButtons">
